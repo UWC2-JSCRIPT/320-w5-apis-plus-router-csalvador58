@@ -8,7 +8,7 @@ export default function RootLayout() {
     "https://i0.wp.com/www.vooks.net/img/2016/02/pokemonlogo.jpg?w=1424&ssl=1";
   return (
     <>
-      <div class="hero">
+      <div className="hero">
         <img
           className={classes.heroImage}
           src={pokemonHeaderUrl}
