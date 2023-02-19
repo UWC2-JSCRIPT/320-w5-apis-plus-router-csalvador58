@@ -1,6 +1,12 @@
 .content {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  transition: 650ms;
+}
+
+.content:hover {
+  transition: transform 200ms;
+  transform: translateY(-10px);
 }
 
 .image-container {
@@ -17,7 +23,9 @@
   grid-row-start: 5;
   grid-row-end: 8;
   overflow: hidden;
-  background-color: aqua;
+  background-color: rgb(0, 0, 0);
+  text-align: center;
+  border-radius: 10px;
 }
 
 .pokemon {
@@ -25,4 +33,12 @@
   width: 100%;
   object-fit: contain;
   overflow: hidden;
+}
+
+p::first-letter {
+  text-transform: capitalize;
+}
+
+p {
+  color: blanchedalmond;
 }
