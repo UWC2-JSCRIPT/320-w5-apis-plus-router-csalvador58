@@ -9,9 +9,9 @@ const router = createBrowserRouter([
     path: "/",
     element: <RootLayout />,
     children: [
-      {},
-      {}
-    ]
+      { index: true, element: <HomePage /> },
+      { path: "/characters", element: <Characters /> },
+    ],
   },
 ]);
 
