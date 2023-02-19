@@ -8,7 +8,7 @@ export default function HomePage() {
   useEffect(() => {
     // Generate random poke IDs
     const pokemonIds = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 1; i++) {
       // Generate an ID from 1 to 1008 of total possible pokemons
       const randomId = Math.floor(Math.random() * 1009);
       if (!pokemonIds.includes(randomId)) {
@@ -19,15 +19,13 @@ export default function HomePage() {
       }
     }
 
-    // console.log(pokemonIds);
-
     // Create random pokemon list
 
     pokemonIds.forEach((id) => {
       const url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
-      //   console.log(id);
+      
 
-      fetch()
+      fetch(url)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
@@ -50,7 +48,7 @@ export default function HomePage() {
             height: data.height,
             weight: data.weight,
           };
-          // console.log(pokeData);
+          
 
           setPokemonList((currentState) => [...currentState, pokeData]);
           // }

@@ -1,13 +1,14 @@
 import React from "react";
 import Card from "../ui/Card";
 import classes from "../css/Container.module.css";
+import PropTypes from "prop-types";
 
 export default function Characters({ pokemonList }) {
-    // console.log(pokemonList)
+  // console.log(pokemonList)
   const renderCards = pokemonList.map((pokemon, index) => {
     return (
       <Card
-        key={index}
+        key={`Pokemon-${index}`}
         id={pokemon.id}
         name={pokemon.name}
         image={pokemon.image}
@@ -23,3 +24,7 @@ export default function Characters({ pokemonList }) {
     </>
   );
 }
+
+Characters.propTypes = {
+  pokemonList: PropTypes.array.isRequired,
+};

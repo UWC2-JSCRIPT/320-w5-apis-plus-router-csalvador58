@@ -1,8 +1,8 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Characters from "./components/Characters";
 import HomePage from "./components/HomePage";
 import RootLayout from "./components/RootLayout";
+import Details from "./components/Details";
 
 const router = createBrowserRouter([
   {
@@ -10,7 +10,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: "/characters", element: <Characters /> },
+      { path: "Pokemon-:id", element: <Details /> },
     ],
   },
 ]);
