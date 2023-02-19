@@ -1,0 +1,28 @@
+.content {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.image-container {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 5;
+  overflow: hidden;
+}
+
+.details {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 5;
+  grid-row-end: 8;
+  overflow: hidden;
+  background-color: aqua;
+}
+
+.pokemon {
+  height: 250px;
+  width: 100%;
+  object-fit: contain;
+  overflow: hidden;
+}
