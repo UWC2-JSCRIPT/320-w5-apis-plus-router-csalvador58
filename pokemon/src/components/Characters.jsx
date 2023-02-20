@@ -1,8 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Card from "../ui/Card";
 import classes from "../css/Characters.module.css";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 
 export default function Characters({ pokemonList }) {
   // console.log(pokemonList)

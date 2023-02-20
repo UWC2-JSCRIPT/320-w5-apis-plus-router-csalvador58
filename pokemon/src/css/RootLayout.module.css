@@ -1,7 +1,7 @@
 .heroImage {
-    height: 35vh;
-    width: 100%;
-    object-fit: cover;
-    overflow: hidden;
-    margin-bottom: -20px;
+  height: 35vh;
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  margin-bottom: -20px;
 }

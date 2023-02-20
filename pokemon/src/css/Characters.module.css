@@ -1,12 +1,12 @@
 .container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 1rem;
-    gap: 1rem;
-  }
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  gap: 1rem;
+}
 
 ul {
-    list-style: none;
+  list-style: none;
 }

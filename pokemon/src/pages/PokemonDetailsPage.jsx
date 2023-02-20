@@ -13,12 +13,10 @@ export default function PokemonDetailsPage() {
     setPokemonDetails({});
     setPokemonStats([]);
     const url = `https://pokeapi.co/api/v2/pokemon/${pokemon.id}/`;
-    console.log(url);
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         const pokeData = {
           id: data.id,
           name: data.name,
@@ -34,9 +32,10 @@ export default function PokemonDetailsPage() {
       })
       .catch((error) => console.log(error));
 
+    //   Commented code for debugging only with fixed data instead of using fetch  
     //   const data = pokemonDefaultData.filter((el) => el.id == pokemon.id);
     //   const { id, name, height, weight, stats } = pokemonDetails;
-   
+
     //   const image = data[0].sprites.other["official-artwork"].front_default;
     //   const image = pokemonDetails.sprites.other["official-artwork"].front_default;
     //   const imageAlt = `Front view of ${name}`;
@@ -60,7 +59,6 @@ export default function PokemonDetailsPage() {
     } else {
       setPokemonStats(<li key="Stat not Available">Stats not available</li>);
     }
-
   }, [pokemonDetails]);
 
   return (

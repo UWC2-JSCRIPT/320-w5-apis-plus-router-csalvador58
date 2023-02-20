@@ -7,7 +7,7 @@ export default function HomePage2() {
     <div className={classes.content}>
       <h1>Are you ready to Catch'em All?</h1>
       <p>Click below to randomly generate your Pokemon Cards</p>
-      <Link to={'/Pokemon'}>
+      <Link to={"/Pokemon"}>
         <button> Click Me!</button>
       </Link>
     </div>

@@ -1,10 +1,10 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import RootLayout from "./components/RootLayout";
 import ErrorPage from "./pages/ErrorPage";
-import PokemonPage from "./pages/PokemonPage";
+import HomePage from "./pages/HomePage";
 import PokemonDetailsPage from "./pages/PokemonDetailsPage";
+import PokemonPage from "./pages/PokemonPage";
+import RootLayout from "./components/RootLayout";
 
 const router = createBrowserRouter([
   {
