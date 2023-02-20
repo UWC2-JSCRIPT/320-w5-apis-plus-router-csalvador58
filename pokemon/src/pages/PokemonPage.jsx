@@ -4,11 +4,12 @@ import Characters from "../components/Characters";
 
 export default function PokemonPage() {
   const [pokemonList, setPokemonList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Generate random poke IDs
     const pokemonIds = [];
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < 10; i++) {
       // Generate an ID from 1 to 1008 of total possible pokemons
       const randomId = Math.floor(Math.random() * 1009);
       if (!pokemonIds.includes(randomId)) {
@@ -26,8 +27,7 @@ export default function PokemonPage() {
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
-          
-          // Commented code for debugging only with fixed data instead of using fetch  
+          // Commented code for debugging only with fixed data instead of using fetch
           // pokemonDefaultData.forEach((data) => {
           // console.log(data.id);
           // console.log(pokemonList)
@@ -59,16 +59,21 @@ export default function PokemonPage() {
               return currentState;
             }
           });
+          setIsLoading(false);
           // }
         })
 
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          setIsLoading(false);
+          console.log(error);
+        });
     });
     // });
   }, []);
 
   return (
     <>
+      {isLoading && <h2 style={{ textAlign: "center" }}>Page is Loading...</h2>}
       <Characters pokemonList={pokemonList} />
     </>
   );

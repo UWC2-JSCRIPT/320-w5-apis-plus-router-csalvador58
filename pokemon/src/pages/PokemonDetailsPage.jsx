@@ -6,6 +6,7 @@ import classes from "../css/PokemonDetailsPage.module.css";
 export default function PokemonDetailsPage() {
   const [pokemonDetails, setPokemonDetails] = useState({});
   const [pokemonStats, setPokemonStats] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const pokemon = useParams();
 
@@ -29,10 +30,14 @@ export default function PokemonDetailsPage() {
           type: data.types[0].type.name,
         };
         setPokemonDetails(pokeData);
+        setIsLoading(false);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setIsLoading(false);
+        console.log(error);
+      });
 
-    //   Commented code for debugging only with fixed data instead of using fetch  
+    //   Commented code for debugging only with fixed data instead of using fetch
     //   const data = pokemonDefaultData.filter((el) => el.id == pokemon.id);
     //   const { id, name, height, weight, stats } = pokemonDetails;
 
@@ -42,7 +47,7 @@ export default function PokemonDetailsPage() {
     //   const type = data[0].types[0].type.name;
     //   const type = pokemonDetails.types[0].type.name;
     //   console.log(stats);
-  }, []);
+  }, [pokemon.id]);
 
   useEffect(() => {
     if (pokemonDetails.stats) {
@@ -61,6 +66,7 @@ export default function PokemonDetailsPage() {
 
   return (
     <>
+      {isLoading && <h2 style={{ textAlign: "center" }}>Page is Loading...</h2>}
       <div className={classes["details-container"]}>
         <div>
           <img
