@@ -4,9 +4,11 @@ import classes from "../css/NavigationLinks.module.css";
 
 export default function NavigationLinks() {
   return (
-    <div className={classes.navbar}>
-      <Link to='' className={classes.link}>Home</Link>
-      <Link to='characters' className={classes.link}>Characters</Link>
-    </div>
+    <nav>
+      <ul className={classes.navbar}>
+        <li><Link to='/' className={classes.link}>Home</Link></li>
+        <li><Link to='Pokemon' className={classes.link}>Pokemon</Link></li>
+      </ul>
+    </nav>
   );
 }

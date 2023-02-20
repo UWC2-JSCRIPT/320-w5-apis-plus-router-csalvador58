@@ -35,10 +35,12 @@
   overflow: hidden;
 }
 
-p::first-letter {
+.details:has(p) ::first-letter {
+  text-decoration: none;
   text-transform: capitalize;
 }
 
-p {
+.details:has(p) {
+  text-decoration: none;
   color: blanchedalmond;
 }

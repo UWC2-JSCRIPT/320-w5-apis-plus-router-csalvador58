@@ -1,28 +1,29 @@
 import React from "react";
 import Card from "../ui/Card";
-import classes from "../css/Container.module.css";
+import classes from "../css/Characters.module.css";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export default function Characters({ pokemonList }) {
   // console.log(pokemonList)
   const renderCards = pokemonList.map((pokemon, index) => {
     return (
-      <Card
+      <Link
         key={`Pokemon-${index}`}
-        id={pokemon.id}
-        name={pokemon.name}
-        image={pokemon.image}
-        imageAlt={pokemon.imageAlt}
-      />
+        to={`/Pokemon/${pokemon.id}`}
+        style={{ textDecoration: "none" }}
+      >
+        <Card
+          id={pokemon.id}
+          name={pokemon.name}
+          image={pokemon.image}
+          imageAlt={pokemon.imageAlt}
+        />
+      </Link>
     );
   });
 
-  return (
-    <>
-      <div>Characters</div>
-      <div className={classes.container}>{renderCards}</div>
-    </>
-  );
+  return <div className={classes.container}>{renderCards}</div>;
 }
 
 Characters.propTypes = {
