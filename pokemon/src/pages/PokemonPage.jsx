@@ -30,7 +30,7 @@ export default function PokemonPage() {
     //     console.log(data);
 
     pokemonDefaultData.forEach((data) => {
-      console.log(data.id);
+      // console.log(data.id);
       // console.log(pokemonList)
       // let lookupIds = pokemonList.map((item) => {
       //   return item.id;
@@ -51,7 +51,7 @@ export default function PokemonPage() {
       };
 
       setPokemonList((currentState) => {
-        console.log(currentState);
+        // console.log(currentState);
         const isDuplicate = currentState.findIndex(
           (pokemon) => pokemon.id === pokeData.id
         );

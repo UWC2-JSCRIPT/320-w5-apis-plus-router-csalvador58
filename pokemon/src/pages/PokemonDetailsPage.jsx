@@ -1,75 +1,93 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import pokemonDefaultData from "../pokeObjEx.json";
 import classes from "../css/PokemonDetailsPage.module.css";
+// import pokemonDefaultData from "../pokeObjEx.json";
 
 export default function PokemonDetailsPage() {
-  const [pokemonList, setPokemonList] = useState({});
+  const [pokemonDetails, setPokemonDetails] = useState({});
+  const [pokemonStats, setPokemonStats] = useState([]);
 
   const pokemon = useParams();
-  //   console.log(pokemon);
 
-  //   const data = pokemonDefaultData.filter((pokeId) => pokeId.id === pokemon.id);
-  //   console.log(data);
+  useEffect(() => {
+    setPokemonDetails({});
+    setPokemonStats([]);
+    const url = `https://pokeapi.co/api/v2/pokemon/${pokemon.id}/`;
+    console.log(url);
 
-  //   {
-  //     id: data.id,
-  //     name: data.name,
-  //     image: data.sprites.other["official-artwork"].front_default,
-  //     imageAlt: `Front view of ${data.name}`,
-  //     moves: data.moves,
-  //     height: data.height,
-  //     weight: data.weight,
-  //   }
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        const pokeData = {
+          id: data.id,
+          name: data.name,
+          image: data.sprites.other["official-artwork"].front_default,
+          imageAlt: `Front view of ${data.name}`,
+          moves: data.moves,
+          height: data.height,
+          weight: data.weight,
+          stats: data.stats,
+          type: data.types[0].type.name,
+        };
+        setPokemonDetails(pokeData);
+      })
+      .catch((error) => console.log(error));
 
-  //   useEffect(() => {
+    //   const data = pokemonDefaultData.filter((el) => el.id == pokemon.id);
+    //   const { id, name, height, weight, stats } = pokemonDetails;
+   
+    //   const image = data[0].sprites.other["official-artwork"].front_default;
+    //   const image = pokemonDetails.sprites.other["official-artwork"].front_default;
+    //   const imageAlt = `Front view of ${name}`;
+    //   const type = data[0].types[0].type.name;
+    //   const type = pokemonDetails.types[0].type.name;
+    //   console.log(stats);
+  }, []);
 
-  const data = pokemonDefaultData.filter((el) => el.id == pokemon.id);
-  const [{ id, name, height, weight, stats }] = data;
-  const image = data[0].sprites.other["official-artwork"].front_default;
-  const imageAlt = `Front view of ${name}`;
-  const type = data[0].types[0].type.name;
-  console.log(stats);
-  const pokeStats = stats.map((element) => {
-    return (
-      <>
-        <li>{`${element.stat.name}: ${element.base_stat}`}</li>
-      </>
-    );
-  });
-  console.log(pokeStats);
+  useEffect(() => {
+    console.log(pokemonDetails.stats);
 
-  // const pokemonIndex = pokemonDefaultData.filter((element) => {
-  //   console.log(`El ID: ${element.id}`);
-  //   console.log(`ID: ${pokemon.id}`);
-  //   if (element.id === pokemon.id) {
-  //     return element;
-  //   }
-  // });
-  // console.log(`PokeIndex: ${pokemonIndex}`);
-  //   }, []);
+    if (pokemonDetails.stats) {
+      const pokeStats = pokemonDetails.stats.map((element) => {
+        return (
+          <li
+            key={element.stat.name}
+          >{`${element.stat.name}: ${element.base_stat}`}</li>
+        );
+      });
+      setPokemonStats(pokeStats);
+    } else {
+      setPokemonStats(<li key="Stat not Available">Stats not available</li>);
+    }
+
+  }, [pokemonDetails]);
 
   return (
     <>
       <div className={classes["details-container"]}>
         <div>
-          <img className={classes["details-image"]} src={image} alt={imageAlt}></img>
+          <img
+            className={classes["details-image"]}
+            src={pokemonDetails.image}
+            alt={pokemonDetails.imageAlt}
+          ></img>
         </div>
         <div className={classes["details-content"]}>
-          <h1>{name}</h1>
+          <h1>{pokemonDetails.name}</h1>
           <div>
             <b>Pokemon Details:</b>
             <ul>
-              <li>{`PokeDex ID: ${id}`}</li>
-              <li>{`Height: ${height}`}</li>
-              <li>{`Weight: ${weight}`}</li>
-              <li>{`Type: ${type}`}</li>
+              <li key="Pokedex ID">{`PokeDex ID: ${pokemonDetails.id}`}</li>
+              <li key="Height">{`Height: ${pokemonDetails.height}`}</li>
+              <li key="Weight">{`Weight: ${pokemonDetails.weight}`}</li>
+              <li key="Type">{`Type: ${pokemonDetails.type}`}</li>
             </ul>
           </div>
 
           <div className={classes.stats}>
             <b>Stats:</b>
-            <ul>{pokeStats}</ul>
+            <ul>{pokemonStats}</ul>
           </div>
         </div>
       </div>
