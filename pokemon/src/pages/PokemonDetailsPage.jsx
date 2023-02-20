@@ -45,8 +45,6 @@ export default function PokemonDetailsPage() {
   }, []);
 
   useEffect(() => {
-    console.log(pokemonDetails.stats);
-
     if (pokemonDetails.stats) {
       const pokeStats = pokemonDetails.stats.map((element) => {
         return (
