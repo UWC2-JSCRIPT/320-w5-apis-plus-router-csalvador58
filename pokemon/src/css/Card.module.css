@@ -1,7 +1,18 @@
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .content {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   transition: 650ms;
+  animation: fade-in 2000ms;
+  opacity: 1;
 }
 
 .content:hover {
@@ -44,3 +55,5 @@
   text-decoration: none;
   color: blanchedalmond;
 }
+
+

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import Card from "../ui/Card";
+import Card from "../components/Card";
 import classes from "../css/FavoritesPage.module.css";
 import FavoritesContext from "../store/FavoritesContext";
 
@@ -27,6 +27,13 @@ export default function FavoritesPage() {
   if (favoritesContext.favorites.length > 0) {
     return <div className={classes.container}>{renderCards}</div>;
   } else {
-    return <h2 style={{ textAlign: "center" }}>Favorites is Empty!</h2>;
+    return (
+      <div className={classes["align-center"]}>
+        <h2>You have not selected any favorite Pokemons!</h2>
+        <Link to={"/Pokemon"}>
+          <button> Click here to select one now! </button>
+        </Link>
+      </div>
+    );
   }
 }

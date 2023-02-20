@@ -105,7 +105,7 @@ export default function PokemonDetailsPage() {
             </div>
           ) : (
             <div className={classes.AddFavorites} onClick={addFavoriteHandler}>
-              Add To Favorites
+              &#x2B50; Add To Favorites &#x2B50;
             </div>
           )}
         </div>

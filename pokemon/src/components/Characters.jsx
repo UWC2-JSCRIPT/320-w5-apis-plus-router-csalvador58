@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Card from "../ui/Card";
+import Card from "./Card";
 import classes from "../css/Characters.module.css";
 import PropTypes from "prop-types";
 

@@ -29,10 +29,27 @@ export default function FavoritesProvider({ children }) {
     });
   };
 
+  const saveLoadFavorites = (action) => {
+    if (action === "save") {
+      const pokemonData = JSON.stringify(favorite);
+      localStorage.setItem("pokemonFavData", pokemonData);
+    } else if (action === "load") {
+      // First clear existing data
+      setFavorite([]);
+      const pokemonData = JSON.parse(localStorage.getItem("pokemonFavData"));
+      setFavorite(pokemonData);
+    } else if (action === "clear") {
+      const pokemonData = "";
+      localStorage.setItem("pokemonFavData", pokemonData);
+      setFavorite([]);
+    }
+  };
+
   const storedFavoritesContext = {
     favorites: favorite,
     addFavorite: addToFavorites,
     removeFavorite: removeFromFavorites,
+    saveLoadFav: saveLoadFavorites,
   };
 
   return (
