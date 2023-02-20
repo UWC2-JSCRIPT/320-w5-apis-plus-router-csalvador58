@@ -28,3 +28,26 @@
 .details-content:has(li) {
   font-family: Papyrus, fantasy;
 }
+
+.AddFavorites {
+  color: blue;
+  font-weight: bold;
+  transition: 650ms;
+}
+
+.RemoveFavorites {
+  color: red;
+  font-weight: bold;
+  transition: 650ms;
+}
+.AddFavorites:hover {
+  cursor: pointer;
+  transition: transform 200ms;
+  transform: translateY(-8px);
+}
+
+.RemoveFavorites:hover {
+  cursor: pointer;
+  transition: transform 200ms;
+  transform: translateY(-8px);
+}

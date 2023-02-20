@@ -44,9 +44,6 @@ export default function PokemonPage() {
             name: data.name,
             image: data.sprites.other["official-artwork"].front_default,
             imageAlt: `Front view of ${data.name}`,
-            moves: data.moves,
-            height: data.height,
-            weight: data.weight,
           };
 
           setPokemonList((currentState) => {

@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import classes from "../css/PokemonDetailsPage.module.css";
+import FavoritesContext from "../store/FavoritesContext";
 // import pokemonDefaultData from "../pokeObjEx.json";
 
 export default function PokemonDetailsPage() {
   const [pokemonDetails, setPokemonDetails] = useState({});
   const [pokemonStats, setPokemonStats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  // const [isFavorite, setIsFavorite] = useState(false);
 
   const pokemon = useParams();
 
@@ -23,7 +25,6 @@ export default function PokemonDetailsPage() {
           name: data.name,
           image: data.sprites.other["official-artwork"].front_default,
           imageAlt: `Front view of ${data.name}`,
-          moves: data.moves,
           height: data.height,
           weight: data.weight,
           stats: data.stats,
@@ -64,6 +65,27 @@ export default function PokemonDetailsPage() {
     }
   }, [pokemonDetails]);
 
+  const favoritesContext = useContext(FavoritesContext);
+
+  const isFavorite = favoritesContext.favorites.find(
+    (pokemon) => pokemon.id === pokemonDetails.id
+  );
+
+  const addFavoriteHandler = () => {
+    // setIsFavorite(true)
+    favoritesContext.addFavorite({
+      id: pokemonDetails.id,
+      name: pokemonDetails.name,
+      image: pokemonDetails.image,
+      imageAlt: pokemonDetails.imageAlt,
+    });
+  };
+
+  const removeFavoriteHandler = () => {
+    // setIsFavorite(false)
+    favoritesContext.removeFavorite(pokemonDetails.id);
+  };
+
   return (
     <>
       {isLoading && <h2 style={{ textAlign: "center" }}>Page is Loading...</h2>}
@@ -74,6 +96,18 @@ export default function PokemonDetailsPage() {
             src={pokemonDetails.image}
             alt={pokemonDetails.imageAlt}
           ></img>
+          {isFavorite ? (
+            <div
+              className={classes.RemoveFavorites}
+              onClick={removeFavoriteHandler}
+            >
+              Remove From Favorites
+            </div>
+          ) : (
+            <div className={classes.AddFavorites} onClick={addFavoriteHandler}>
+              Add To Favorites
+            </div>
+          )}
         </div>
         <div className={classes["details-content"]}>
           <h1>{pokemonDetails.name}</h1>
