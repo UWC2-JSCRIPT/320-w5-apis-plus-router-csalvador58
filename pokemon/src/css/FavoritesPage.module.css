@@ -1,17 +1,27 @@
-.container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 1rem;
-    gap: 1rem;
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
-  
-  ul {
-    list-style: none;
+  to {
+    opacity: 1;
   }
+}
 
-  .align-center {
-    text-align: center;
-  }
-  
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+ul {
+  list-style: none;
+}
+
+.align-center {
+  animation: fade-in 1500ms;
+  opacity: 1;
+  text-align: center;
+}

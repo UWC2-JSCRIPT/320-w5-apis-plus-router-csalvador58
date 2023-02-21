@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import classes from "../css/HomePage.module.css";
 import FavoritesContext from "../store/FavoritesContext";
+import classes from "../css/HomePage.module.css";
 
 export default function HomePage2() {
   const favoritesContext = useContext(FavoritesContext);
@@ -18,6 +18,7 @@ export default function HomePage2() {
       setDisplay(null);
     }, 2500);
   };
+  
   const loadHandler = () => {
     favoritesContext.saveLoadFav("load");
   };
@@ -43,7 +44,7 @@ export default function HomePage2() {
   return (
     <div className={classes.content}>
       <h1>&#x2B50; Are you ready to Catch'em All? &#x2B50;</h1>
-      <p>Click below to randomly generate your Pokemon Cards</p>
+      <p>Click below to randomly generate your Pokemon Cards.</p>
       <Link to={"/Pokemon"}>
         <button> Click Me!</button>
       </Link>

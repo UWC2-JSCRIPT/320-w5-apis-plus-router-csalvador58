@@ -5,7 +5,6 @@ import classes from "../css/Characters.module.css";
 import PropTypes from "prop-types";
 
 export default function Characters({ pokemonList }) {
-  // console.log(pokemonList)
   const renderCards = pokemonList.map((pokemon, index) => {
     return (
       <Link

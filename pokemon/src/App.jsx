@@ -1,11 +1,11 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
+import FavoritesPage from "../src/pages/FavoritesPage";
 import HomePage from "./pages/HomePage";
 import PokemonDetailsPage from "./pages/PokemonDetailsPage";
 import PokemonPage from "./pages/PokemonPage";
 import RootLayout from "./components/RootLayout";
-import FavoritesPage from '../src/pages/FavoritesPage'
 
 const router = createBrowserRouter([
   {

@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
-import classes from "../css/FavoritesPage.module.css";
 import FavoritesContext from "../store/FavoritesContext";
+import classes from "../css/FavoritesPage.module.css";
 
 export default function FavoritesPage() {
   const favoritesContext = useContext(FavoritesContext);
   const renderCards = favoritesContext.favorites.map((pokemon, index) => {
     return (
       <Link
-        key={`Pokemon-${index}`}
+        key={`Pokemon-${pokemon.id}`}
         to={`/Pokemon/${pokemon.id}`}
         style={{ textDecoration: "none" }}
       >

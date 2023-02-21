@@ -7,7 +7,7 @@ export default function PokemonPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Generate random poke IDs
+    // Generate a specified amount of random pokemon IDs
     const pokemonIds = [];
     for (let i = 0; i < 10; i++) {
       // Generate an ID from 1 to 1008 of total possible pokemons
@@ -20,7 +20,7 @@ export default function PokemonPage() {
       }
     }
 
-    // Create random pokemon list
+    // Fetch pokemon data from random pokemon IDs
     pokemonIds.forEach((id) => {
       const url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
 
@@ -39,6 +39,7 @@ export default function PokemonPage() {
           // console.log(isDuplicate)
           // if (!isDuplicate) {
 
+          // Create shape of data to store in state
           const pokeData = {
             id: data.id,
             name: data.name,

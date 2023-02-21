@@ -1,15 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import classes from "../css/PokemonDetailsPage.module.css";
 import FavoritesContext from "../store/FavoritesContext";
+import classes from "../css/PokemonDetailsPage.module.css";
 // import pokemonDefaultData from "../pokeObjEx.json";
 
 export default function PokemonDetailsPage() {
   const [pokemonDetails, setPokemonDetails] = useState({});
   const [pokemonStats, setPokemonStats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [isFavorite, setIsFavorite] = useState(false);
-
+  const favoritesContext = useContext(FavoritesContext);
   const pokemon = useParams();
 
   useEffect(() => {
@@ -20,6 +19,7 @@ export default function PokemonDetailsPage() {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
+        // Shape data and save to state
         const pokeData = {
           id: data.id,
           name: data.name,
@@ -50,6 +50,7 @@ export default function PokemonDetailsPage() {
     //   console.log(stats);
   }, [pokemon.id]);
 
+  // useEffect used to ensure pokemon stats data is available before processing map method to prevent errors
   useEffect(() => {
     if (pokemonDetails.stats) {
       const pokeStats = pokemonDetails.stats.map((element) => {
@@ -65,14 +66,11 @@ export default function PokemonDetailsPage() {
     }
   }, [pokemonDetails]);
 
-  const favoritesContext = useContext(FavoritesContext);
-
   const isFavorite = favoritesContext.favorites.find(
     (pokemon) => pokemon.id === pokemonDetails.id
   );
 
   const addFavoriteHandler = () => {
-    // setIsFavorite(true)
     favoritesContext.addFavorite({
       id: pokemonDetails.id,
       name: pokemonDetails.name,
@@ -82,7 +80,6 @@ export default function PokemonDetailsPage() {
   };
 
   const removeFavoriteHandler = () => {
-    // setIsFavorite(false)
     favoritesContext.removeFavorite(pokemonDetails.id);
   };
 
