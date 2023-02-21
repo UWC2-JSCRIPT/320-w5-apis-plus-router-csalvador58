@@ -1,0 +1,57 @@
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  transition: 650ms;
+  animation: fade-in 2000ms;
+  opacity: 1;
+}
+
+.content:hover {
+  transition: transform 200ms;
+  transform: translateY(-10px);
+}
+
+.image-container {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 5;
+  overflow: hidden;
+}
+
+.details {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 5;
+  grid-row-end: 8;
+  overflow: hidden;
+  background-color: rgb(0, 0, 0);
+  text-align: center;
+  border-radius: 10px;
+}
+
+.pokemon {
+  height: 250px;
+  width: 100%;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+.details:has(p) ::first-letter {
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.details:has(p) {
+  text-decoration: none;
+  color: blanchedalmond;
+}

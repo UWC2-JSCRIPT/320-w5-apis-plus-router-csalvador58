@@ -1,0 +1,62 @@
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.details-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fade-in 1500ms;
+  opacity: 1;
+}
+
+.details-image {
+  height: auto;
+  max-height: 450px;
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.details-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.details-content:has(h1) ::first-letter {
+  text-transform: capitalize;
+}
+
+.details-content:has(li) {
+  font-family: Papyrus, fantasy;
+}
+
+.AddFavorites {
+  color: blue;
+  font-weight: bold;
+  transition: 650ms;
+}
+
+.RemoveFavorites {
+  color: red;
+  font-weight: bold;
+  transition: 650ms;
+}
+.AddFavorites:hover {
+  cursor: pointer;
+  transition: transform 200ms;
+  transform: translateY(-8px);
+}
+
+.RemoveFavorites:hover {
+  cursor: pointer;
+  transition: transform 200ms;
+  transform: translateY(-8px);
+}
